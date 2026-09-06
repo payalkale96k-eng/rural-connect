@@ -1,0 +1,58 @@
+const Opportunity = require('../models/Opportunity');
+
+exports.getOpportunities = async (req, res) => {
+  try {
+    const { type, location, active, limit = 50 } = req.query;
+    const filter = {};
+    if (active !== undefined) filter.isActive = active === 'true';
+    if (type) filter.type = type;
+    if (location) filter.location = new RegExp(location, 'i');
+    
+    const items = await Opportunity.find(filter)
+      .limit(parseInt(limit))
+      .sort({ createdAt: -1 });
+    res.json(items);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.getOpportunityById = async (req, res) => {
+  try {
+    const item = await Opportunity.findById(req.params.id);
+    if (!item) return res.status(404).json({ message: 'Not found' });
+    res.json(item);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.createOpportunity = async (req, res) => {
+  try {
+    const item = await Opportunity.create(req.body);
+    res.status(201).json(item);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.updateOpportunity = async (req, res) => {
+  try {
+    const item = await Opportunity.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!item) return res.status(404).json({ message: 'Not found' });
+    res.json(item);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.deleteOpportunity = async (req, res) => {
+  try {
+    const item = await Opportunity.findById(req.params.id);
+    if (!item) return res.status(404).json({ message: 'Not found' });
+    await item.deleteOne();
+    res.json({ message: 'Deleted' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

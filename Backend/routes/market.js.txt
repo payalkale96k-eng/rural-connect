@@ -1,0 +1,12 @@
+const express = require('express');
+const router = express.Router();
+const { protect, admin } = require('../middleware/auth');
+const { getMarket, getMarketById, createMarket, updateMarket, deleteMarket } = require('../controllers/marketController');
+
+router.get('/', getMarket);
+router.get('/:id', getMarketById);
+router.post('/', protect, admin, createMarket);
+router.put('/:id', protect, admin, updateMarket);
+router.delete('/:id', protect, admin, deleteMarket);
+
+module.exports = router;

@@ -1,0 +1,19 @@
+const mongoose = require('mongoose');
+
+const schemeSchema = new mongoose.Schema({
+  name: { type: String, required: true, trim: true },
+  description: { type: String, required: true },
+  benefits: String,
+  eligibility: String,
+  requiredDocuments: [String],
+  applicationProcess: String,
+  applicationLink: String,
+  targetCategory: [{ 
+    type: String, 
+    enum: ['Farmers','Women','Students','Senior citizens','Employment','Housing','Agriculture','Other'] 
+  }],
+  isActive: { type: Boolean, default: true },
+  sourceUrl: String,
+}, { timestamps: true });
+
+module.exports = mongoose.model('Scheme', schemeSchema);

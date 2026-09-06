@@ -1,0 +1,18 @@
+const express = require('express');
+const router = express.Router();
+const { protect, admin } = require('../middleware/auth');
+const { createComplaint, getMyComplaints, getAllComplaints, getComplaintById, updateComplaintStatus, deleteComplaint } = require('../controllers/complaintController');
+
+router.post('/', protect, createComplaint);
+router.get('/', protect, (req, res) => {
+  if (req.query.mine === 'true') {
+    getMyComplaints(req, res);
+  } else {
+    getAllComplaints(req, res);
+  }
+});
+router.get('/:id', protect, getComplaintById);
+router.put('/:id/status', protect, admin, updateComplaintStatus);
+router.delete('/:id', protect, admin, deleteComplaint);
+
+module.exports = router;

@@ -1,0 +1,19 @@
+const mongoose = require('mongoose');
+
+const oppSchema = new mongoose.Schema({
+  title: { type: String, required: true, trim: true },
+  type: { 
+    type: String, 
+    enum: ['Job','Training','Skill development','Government employment','Business','Community program','Other'], 
+    default: 'Other' 
+  },
+  description: { type: String, required: true },
+  organization: String,
+  location: String,
+  eligibility: String,
+  contactInfo: String,
+  applicationLink: String,
+  isActive: { type: Boolean, default: true },
+}, { timestamps: true });
+
+module.exports = mongoose.model('Opportunity', oppSchema);

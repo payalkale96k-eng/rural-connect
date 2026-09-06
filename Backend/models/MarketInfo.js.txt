@@ -1,0 +1,13 @@
+const mongoose = require('mongoose');
+
+const marketSchema = new mongoose.Schema({
+  crop: { type: String, required: true, trim: true },
+  market: { type: String, required: true, trim: true },
+  price: { type: Number, required: true },
+  unit: { type: String, required: true, trim: true },
+  location: { type: String, required: true, trim: true },
+  date: { type: Date, required: true },
+  source: { type: String, default: 'Admin entered', trim: true },
+}, { timestamps: true });
+
+module.exports = mongoose.model('MarketInfo', marketSchema);

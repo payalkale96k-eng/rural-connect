@@ -1,0 +1,12 @@
+const express = require('express');
+const router = express.Router();
+const { protect, admin } = require('../middleware/auth');
+const { getSchemes, getSchemeById, createScheme, updateScheme, deleteScheme } = require('../controllers/schemeController');
+
+router.get('/', getSchemes);
+router.get('/:id', getSchemeById);
+router.post('/', protect, admin, createScheme);
+router.put('/:id', protect, admin, updateScheme);
+router.delete('/:id', protect, admin, deleteScheme);
+
+module.exports = router;

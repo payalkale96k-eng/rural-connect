@@ -1,0 +1,77 @@
+const User = require('../models/User');
+const Complaint = require('../models/Complaint');
+const Scheme = require('../models/Scheme');
+const Announcement = require('../models/Announcement');
+const EmergencyAlert = require('../models/EmergencyAlert');
+const Opportunity = require('../models/Opportunity');
+
+exports.getOverview = async (req, res) => {
+  try {
+    const totalUsers = await User.countDocuments();
+    const totalComplaints = await Complaint.countDocuments();
+    const complaintsByStatus = await Complaint.aggregate([
+      { $group: { _id: '$status', count: { $sum: 1 } } }
+    ]);
+    const totalSchemes = await Scheme.countDocuments();
+    const totalAnnouncements = await Announcement.countDocuments();
+    const totalAlerts = await EmergencyAlert.countDocuments();
+    const totalOpportunities = await Opportunity.countDocuments();
+
+    res.json({
+      totalUsers,
+      totalComplaints,
+      complaintsByStatus,
+      totalSchemes,
+      totalAnnouncements,
+      totalAlerts,
+      totalOpportunities
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.getComplaintsByCategory = async (req, res) => {
+  try {
+    const data = await Complaint.aggregate([
+      { $group: { _id: '$category', count: { $sum: 1 } } }
+    ]);
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.getComplaintsOverTime = async (req, res) => {
+  try {
+    const data = await Complaint.aggregate([
+      {
+        $group: {
+          _id: {
+            year: { $year: '$createdAt' },
+            month: { $month: '$createdAt' }
+          },
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { '_id.year': 1, '_id.month': 1 } }
+    ]);
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.getUsersByVillage = async (req, res) => {
+  try {
+    const data = await User.aggregate([
+      { $match: { village: { $exists: true, $ne: '' } } },
+      { $group: { _id: '$village', count: { $sum: 1 } } },
+      { $sort: { count: -1 } },
+      { $limit: 20 }
+    ]);
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

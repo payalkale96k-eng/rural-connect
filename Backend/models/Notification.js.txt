@@ -1,0 +1,17 @@
+const mongoose = require('mongoose');
+
+const notifSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  title: { type: String, required: true, trim: true },
+  message: { type: String, required: true },
+  type: { 
+    type: String, 
+    enum: ['Complaint update','New alert','Announcement','System','Other'], 
+    default: 'System' 
+  },
+  isRead: { type: Boolean, default: false },
+  relatedComplaintId: { type: mongoose.Schema.Types.ObjectId, ref: 'Complaint' },
+  relatedAlertId: { type: mongoose.Schema.Types.ObjectId, ref: 'EmergencyAlert' },
+}, { timestamps: true });
+
+module.exports = mongoose.model('Notification', notifSchema);

@@ -1,0 +1,63 @@
+const MarketInfo = require('../models/MarketInfo');
+
+exports.getMarket = async (req, res) => {
+  try {
+    const { crop, market, location, from, to, limit = 50 } = req.query;
+    const filter = {};
+    if (crop) filter.crop = new RegExp(crop, 'i');
+    if (market) filter.market = new RegExp(market, 'i');
+    if (location) filter.location = new RegExp(location, 'i');
+    if (from || to) {
+      filter.date = {};
+      if (from) filter.date.$gte = new Date(from);
+      if (to) filter.date.$lte = new Date(to);
+    }
+    
+    const items = await MarketInfo.find(filter)
+      .limit(parseInt(limit))
+      .sort({ date: -1 });
+    res.json(items);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.getMarketById = async (req, res) => {
+  try {
+    const item = await MarketInfo.findById(req.params.id);
+    if (!item) return res.status(404).json({ message: 'Not found' });
+    res.json(item);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.createMarket = async (req, res) => {
+  try {
+    const item = await MarketInfo.create(req.body);
+    res.status(201).json(item);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.updateMarket = async (req, res) => {
+  try {
+    const item = await MarketInfo.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!item) return res.status(404).json({ message: 'Not found' });
+    res.json(item);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.deleteMarket = async (req, res) => {
+  try {
+    const item = await MarketInfo.findById(req.params.id);
+    if (!item) return res.status(404).json({ message: 'Not found' });
+    await item.deleteOne();
+    res.json({ message: 'Deleted' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

@@ -1,0 +1,88 @@
+const API_BASE_URL = 'http://localhost:5000/api';
+
+const STORAGE_KEYS = {
+  TOKEN: 'rc_token',
+  USER: 'rc_user'
+};
+
+function getToken() {
+  return localStorage.getItem(STORAGE_KEYS.TOKEN);
+}
+
+function setToken(token) {
+  localStorage.setItem(STORAGE_KEYS.TOKEN, token);
+}
+
+function removeToken() {
+  localStorage.removeItem(STORAGE_KEYS.TOKEN);
+  localStorage.removeItem(STORAGE_KEYS.USER);
+}
+
+function getUser() {
+  const userStr = localStorage.getItem(STORAGE_KEYS.USER);
+  return userStr ? JSON.parse(userStr) : null;
+}
+
+function setUser(user) {
+  localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user));
+}
+
+function isLoggedIn() {
+  return !!getToken();
+}
+
+function isAdmin() {
+  const user = getUser();
+  return user && user.role === 'admin';
+}
+
+function requireAuth() {
+  if (!isLoggedIn()) {
+    window.location.href = '/login.html';
+    return false;
+  }
+  return true;
+}
+
+function requireAdmin() {
+  if (!isAdmin()) {
+    window.location.href = '/dashboard/user-dashboard.html';
+    return false;
+  }
+  return true;
+}
+
+// Auto-update navbar based on auth state
+document.addEventListener('DOMContentLoaded', () => {
+  const logoutLinks = document.querySelectorAll('[data-logout]');
+  logoutLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      removeToken();
+      window.location.href = '/index.html';
+    });
+  });
+
+  const authNav = document.getElementById('auth-nav-links');
+  if (authNav) {
+    const user = getUser();
+    if (user) {
+      let html = '';
+      if (user.role === 'admin') {
+        html += `<li class="nav-item"><a class="nav-link" href="/admin/admin-dashboard.html">Admin Dashboard</a></li>`;
+      } else {
+        html += `<li class="nav-item"><a class="nav-link" href="/dashboard/user-dashboard.html">Dashboard</a></li>`;
+      }
+      html += `
+        <li class="nav-item"><a class="nav-link" href="/dashboard/profile.html">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-logout>Logout</a></li>
+      `;
+      authNav.innerHTML = html;
+    } else {
+      authNav.innerHTML = `
+        <li class="nav-item"><a class="nav-link" href="/login.html">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="/register.html">Register</a></li>
+      `;
+    }
+  }
+});

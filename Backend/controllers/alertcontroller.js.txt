@@ -1,0 +1,71 @@
+const EmergencyAlert = require('../models/EmergencyAlert');
+const Notification = require('../models/Notification');
+const User = require('../models/User');
+
+exports.getAlerts = async (req, res) => {
+  try {
+    const { location, active, limit = 20 } = req.query;
+    const filter = {};
+    if (active !== undefined) filter.isActive = active === 'true';
+    if (location) filter.location = new RegExp(location, 'i');
+    
+    const alerts = await EmergencyAlert.find(filter)
+      .limit(parseInt(limit))
+      .sort({ createdAt: -1 });
+    res.json(alerts);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.getAlertById = async (req, res) => {
+  try {
+    const alert = await EmergencyAlert.findById(req.params.id);
+    if (!alert) return res.status(404).json({ message: 'Not found' });
+    res.json(alert);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.createAlert = async (req, res) => {
+  try {
+    const alert = await EmergencyAlert.create(req.body);
+    
+    // Notify all users
+    const users = await User.find().select('_id');
+    const notifications = users.map(u => ({
+      user: u._id,
+      title: 'New Emergency Alert',
+      message: alert.title,
+      type: 'New alert',
+      relatedAlertId: alert._id
+    }));
+    if (notifications.length) await Notification.insertMany(notifications);
+    
+    res.status(201).json(alert);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.updateAlert = async (req, res) => {
+  try {
+    const alert = await EmergencyAlert.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!alert) return res.status(404).json({ message: 'Not found' });
+    res.json(alert);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.deleteAlert = async (req, res) => {
+  try {
+    const alert = await EmergencyAlert.findById(req.params.id);
+    if (!alert) return res.status(404).json({ message: 'Not found' });
+    await alert.deleteOne();
+    res.json({ message: 'Deleted' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

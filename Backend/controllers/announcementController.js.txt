@@ -1,0 +1,58 @@
+const Announcement = require('../models/Announcement');
+
+exports.getAnnouncements = async (req, res) => {
+  try {
+    const { location, active, limit = 20 } = req.query;
+    const filter = {};
+    if (active !== undefined) filter.isActive = active === 'true';
+    if (location) filter.location = new RegExp(location, 'i');
+    
+    const announcements = await Announcement.find(filter)
+      .populate('publishedBy', 'name')
+      .limit(parseInt(limit))
+      .sort({ createdAt: -1 });
+    res.json(announcements);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.getAnnouncementById = async (req, res) => {
+  try {
+    const ann = await Announcement.findById(req.params.id);
+    if (!ann) return res.status(404).json({ message: 'Not found' });
+    res.json(ann);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.createAnnouncement = async (req, res) => {
+  try {
+    const ann = await Announcement.create({ ...req.body, publishedBy: req.user._id });
+    res.status(201).json(ann);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.updateAnnouncement = async (req, res) => {
+  try {
+    const ann = await Announcement.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!ann) return res.status(404).json({ message: 'Not found' });
+    res.json(ann);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.deleteAnnouncement = async (req, res) => {
+  try {
+    const ann = await Announcement.findById(req.params.id);
+    if (!ann) return res.status(404).json({ message: 'Not found' });
+    await ann.deleteOne();
+    res.json({ message: 'Deleted' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

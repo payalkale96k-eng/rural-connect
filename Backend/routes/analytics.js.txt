@@ -1,0 +1,11 @@
+const express = require('express');
+const router = express.Router();
+const { protect, admin } = require('../middleware/auth');
+const { getOverview, getComplaintsByCategory, getComplaintsOverTime, getUsersByVillage } = require('../controllers/analyticsController');
+
+router.get('/overview', protect, admin, getOverview);
+router.get('/complaints-by-category', protect, admin, getComplaintsByCategory);
+router.get('/complaints-over-time', protect, admin, getComplaintsOverTime);
+router.get('/users-by-village', protect, admin, getUsersByVillage);
+
+module.exports = router;

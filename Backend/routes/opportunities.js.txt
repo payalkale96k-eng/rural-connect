@@ -1,0 +1,12 @@
+const express = require('express');
+const router = express.Router();
+const { protect, admin } = require('../middleware/auth');
+const { getOpportunities, getOpportunityById, createOpportunity, updateOpportunity, deleteOpportunity } = require('../controllers/opportunityController');
+
+router.get('/', getOpportunities);
+router.get('/:id', getOpportunityById);
+router.post('/', protect, admin, createOpportunity);
+router.put('/:id', protect, admin, updateOpportunity);
+router.delete('/:id', protect, admin, deleteOpportunity);
+
+module.exports = router;

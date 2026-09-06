@@ -1,0 +1,50 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const connectDB = require('./config/db');
+
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/users');
+const complaintRoutes = require('./routes/complaints');
+const schemeRoutes = require('./routes/schemes');
+const announcementRoutes = require('./routes/announcements');
+const alertRoutes = require('./routes/alerts');
+const agricultureRoutes = require('./routes/agriculture');
+const marketRoutes = require('./routes/market');
+const opportunityRoutes = require('./routes/opportunities');
+const notificationRoutes = require('./routes/notifications');
+const analyticsRoutes = require('./routes/analytics');
+const weatherRoutes = require('./routes/weather');
+
+const app = express();
+connectDB();
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/complaints', complaintRoutes);
+app.use('/api/schemes', schemeRoutes);
+app.use('/api/announcements', announcementRoutes);
+app.use('/api/alerts', alertRoutes);
+app.use('/api/agriculture', agricultureRoutes);
+app.use('/api/market', marketRoutes);
+app.use('/api/opportunities', opportunityRoutes);
+app.use('/api/notifications', notificationRoutes);
+app.use('/api/analytics', analyticsRoutes);
+app.use('/api/weather', weatherRoutes);
+
+app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../frontend/index.html')));
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Something went wrong!' });
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

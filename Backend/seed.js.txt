@@ -1,0 +1,190 @@
+require('dotenv').config();
+const mongoose = require('mongoose');
+const User = require('./models/User');
+const Scheme = require('./models/Scheme');
+const Announcement = require('./models/Announcement');
+const EmergencyAlert = require('./models/EmergencyAlert');
+const AgricultureInfo = require('./models/AgricultureInfo');
+const Opportunity = require('./models/Opportunity');
+const MarketInfo = require('./models/MarketInfo');
+
+const seedDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log('Connected for seeding');
+
+    // Clear existing data
+    await User.deleteMany({});
+    await Scheme.deleteMany({});
+    await Announcement.deleteMany({});
+    await EmergencyAlert.deleteMany({});
+    await AgricultureInfo.deleteMany({});
+    await Opportunity.deleteMany({});
+    await MarketInfo.deleteMany({});
+
+    // Create admin user
+    const admin = await User.create({
+      name: 'Admin User',
+      email: 'admin@ruralconnect.local',
+      password: 'Admin@123',
+      role: 'admin'
+    });
+
+    // Create sample user
+    const user = await User.create({
+      name: 'Ramesh Kumar',
+      email: 'user@ruralconnect.local',
+      password: 'User@123',
+      phone: '9876543210',
+      village: 'Rampur',
+      district: 'Jaipur',
+      state: 'Rajasthan'
+    });
+
+    // Sample government schemes
+    const schemes = await Scheme.insertMany([
+      {
+        name: 'Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)',
+        description: 'Income support scheme for farmers providing Rs. 6000 per year in three installments.',
+        benefits: 'Rs. 6000 per year directly transferred to bank account',
+        eligibility: 'All landholding farmer families',
+        requiredDocuments: ['Aadhaar card', 'Land records', 'Bank account details'],
+        applicationProcess: 'Register through local agriculture department or online portal',
+        applicationLink: 'https://pmkisan.gov.in/',
+        targetCategory: ['Farmers', 'Agriculture'],
+        isActive: true,
+        sourceUrl: 'https://pmkisan.gov.in/'
+      },
+      {
+        name: 'Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA)',
+        description: 'Guarantees 100 days of wage employment per year to rural households.',
+        benefits: 'Wage employment, asset creation in villages',
+        eligibility: 'Adult members of rural households willing to do unskilled manual work',
+        requiredDocuments: ['Aadhaar card', 'Job card'],
+        applicationProcess: 'Apply at Gram Panchayat for job card',
+        applicationLink: 'https://mnrega.nic.in/',
+        targetCategory: ['Employment', 'Farmers'],
+        isActive: true,
+        sourceUrl: 'https://mnrega.nic.in/'
+      },
+      {
+        name: 'Pradhan Mantri Awas Yojana (PMAY) - Gramin',
+        description: 'Housing for All scheme providing financial assistance for construction of pucca houses.',
+        benefits: 'Financial assistance up to Rs. 1.20 lakh for house construction',
+        eligibility: 'Rural households living in kutcha/dilapidated houses',
+        requiredDocuments: ['Aadhaar card', 'BPL certificate', 'Bank account details'],
+        applicationProcess: 'Apply through Gram Panchayat or online',
+        applicationLink: 'https://pmayg.gov.in/',
+        targetCategory: ['Housing', 'Senior citizens'],
+        isActive: true,
+        sourceUrl: 'https://pmayg.gov.in/'
+      }
+    ]);
+
+    // Sample announcements
+    const announcements = await Announcement.insertMany([
+      {
+        title: 'Gram Sabha Meeting',
+        message: 'Gram Sabha meeting will be held on 15th September at 10 AM in the village panchayat office.',
+        location: 'Rampur',
+        publishedBy: admin._id,
+        isActive: true
+      },
+      {
+        title: 'Vaccination Camp',
+        message: 'Free vaccination camp for children under 5 years will be organized at the primary health center.',
+        location: 'All',
+        publishedBy: admin._id,
+        isActive: true
+      }
+    ]);
+
+    // Sample emergency alerts
+    const alerts = await EmergencyAlert.insertMany([
+      {
+        title: 'Heavy Rainfall Warning',
+        message: 'Heavy rainfall expected in the next 48 hours. Farmers are advised to harvest ready crops.',
+        location: 'Jaipur',
+        severity: 'High',
+        type: 'Heavy rainfall',
+        isActive: true
+      }
+    ]);
+
+    // Sample agriculture information
+    const agri = await AgricultureInfo.insertMany([
+      {
+        title: 'Wheat Cultivation Guide - Rabi Season',
+        crop: 'Wheat',
+        season: 'Rabi',
+        content: 'Wheat is a major Rabi crop. Sowing time: October-November. Temperature: 20-25C. Soil: Loamy. Irrigation: 4-5 times.',
+        category: 'Crop info',
+        isActive: true
+      },
+      {
+        title: 'Pest Control in Cotton',
+        crop: 'Cotton',
+        season: 'Kharif',
+        content: 'Common pests: Bollworm, Aphids. Use integrated pest management. Avoid excessive pesticide use.',
+        category: 'Pest/disease',
+        isActive: true
+      }
+    ]);
+
+    // Sample opportunities
+    const opportunities = await Opportunity.insertMany([
+      {
+        title: 'Agriculture Skill Development Program',
+        type: 'Training',
+        description: 'Free 3-month training program on modern farming techniques and organic cultivation.',
+        organization: 'State Agriculture Department',
+        location: 'Jaipur',
+        eligibility: 'Farmers aged 18-45',
+        contactInfo: '9876543210',
+        isActive: true
+      },
+      {
+        title: 'Rural Self Employment Training',
+        type: 'Skill development',
+        description: 'Training for setting up small businesses in rural areas with bank linkage.',
+        organization: 'NABARD',
+        location: 'District Center',
+        eligibility: 'Rural youth 18-35 years',
+        isActive: true
+      }
+    ]);
+
+    // Sample market prices
+    const today = new Date();
+    const market = await MarketInfo.insertMany([
+      {
+        crop: 'Wheat',
+        market: 'Rampur Mandi',
+        price: 2100,
+        unit: 'Rs/quintal',
+        location: 'Jaipur',
+        date: today,
+        source: 'Admin entered'
+      },
+      {
+        crop: 'Rice',
+        market: 'Jaipur APMC',
+        price: 3200,
+        unit: 'Rs/quintal',
+        location: 'Jaipur',
+        date: today,
+        source: 'Admin entered'
+      }
+    ]);
+
+    console.log('✅ Seeding completed successfully!');
+    console.log('👤 Admin: admin@ruralconnect.local / Admin@123');
+    console.log('👤 User: user@ruralconnect.local / User@123');
+    process.exit(0);
+  } catch (err) {
+    console.error('❌ Seeding error:', err);
+    process.exit(1);
+  }
+};
+
+seedDB();

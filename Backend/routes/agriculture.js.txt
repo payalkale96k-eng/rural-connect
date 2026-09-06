@@ -1,0 +1,12 @@
+const express = require('express');
+const router = express.Router();
+const { protect, admin } = require('../middleware/auth');
+const { getAgriculture, getAgricultureById, createAgriculture, updateAgriculture, deleteAgriculture } = require('../controllers/agricultureController');
+
+router.get('/', getAgriculture);
+router.get('/:id', getAgricultureById);
+router.post('/', protect, admin, createAgriculture);
+router.put('/:id', protect, admin, updateAgriculture);
+router.delete('/:id', protect, admin, deleteAgriculture);
+
+module.exports = router;

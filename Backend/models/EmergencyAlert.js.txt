@@ -1,0 +1,21 @@
+const mongoose = require('mongoose');
+
+const alertSchema = new mongoose.Schema({
+  title: { type: String, required: true, trim: true },
+  message: { type: String, required: true },
+  location: { type: String, required: true, trim: true },
+  severity: { 
+    type: String, 
+    enum: ['Low','Medium','High','Critical'], 
+    default: 'Medium' 
+  },
+  type: { 
+    type: String, 
+    enum: ['Flood','Heavy rainfall','Water shortage','Road closure','Other'], 
+    default: 'Other' 
+  },
+  isActive: { type: Boolean, default: true },
+  resolvedAt: Date,
+}, { timestamps: true });
+
+module.exports = mongoose.model('EmergencyAlert', alertSchema);

@@ -1,0 +1,23 @@
+const mongoose = require('mongoose');
+
+const complaintSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  title: { type: String, required: true, trim: true },
+  category: { 
+    type: String, 
+    required: true, 
+    enum: ['Roads','Water supply','Electricity','Sanitation','Street lights','Agriculture','Government services','Other'] 
+  },
+  description: { type: String, required: true },
+  location: { type: String, required: true, trim: true },
+  imageUrl: { type: String, default: '' },
+  status: { 
+    type: String, 
+    enum: ['Submitted','Under Review','In Progress','Resolved'], 
+    default: 'Submitted' 
+  },
+  adminNotes: { type: String, default: '' },
+  resolvedAt: Date,
+}, { timestamps: true });
+
+module.exports = mongoose.model('Complaint', complaintSchema);

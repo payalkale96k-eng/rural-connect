@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rural Connect – Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background:#1b5e20;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Rural Connect</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="schemes.html">Schemes</a></li>
+          <li class="nav-item"><a class="nav-link" href="agriculture.html">Agriculture</a></li>
+          <li class="nav-item"><a class="nav-link" href="weather.html">Weather</a></li>
+          <li class="nav-item"><a class="nav-link" href="market.html">Market</a></li>
+          <li class="nav-item"><a class="nav-link" href="opportunities.html">Opportunities</a></li>
+        </ul>
+        <ul class="navbar-nav" id="auth-nav-links"></ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="container">
+      <h1>Connecting Villages with Information, Services & Opportunities</h1>
+      <p class="lead">Report problems, access schemes, check weather, and stay updated – all in one place.</p>
+      <div class="hero-actions">
+        <a href="dashboard/submit-complaint.html" class="btn btn-accent btn-lg">Report a Problem</a>
+        <a href="schemes.html" class="btn btn-outline-light btn-lg">Find Schemes</a>
+        <a href="weather.html" class="btn btn-outline-light btn-lg">Check Weather</a>
+        <a href="agriculture.html" class="btn btn-outline-light btn-lg">Agriculture Info</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" style="margin-top:40px;">
+    <h2 class="section-title">Emergency Alerts</h2>
+    <div id="alerts-container">
+      <p class="text-muted">Loading alerts...</p>
+    </div>
+  </div>
+
+  <section class="container" style="margin-top:50px;">
+    <h2 class="section-title">Government Schemes</h2>
+    <div class="row" id="schemes-container">
+      <div class="col-12 text-center text-muted">Loading schemes...</div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="schemes.html" class="btn btn-primary-rural">View All Schemes</a>
+    </div>
+  </section>
+
+  <section class="container" style="margin-top:50px;">
+    <h2 class="section-title">Quick Weather Check</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <form id="weather-form" class="row g-3">
+              <div class="col-md-8">
+                <input type="text" class="form-control" id="weather-location" placeholder="Enter village/city name" required>
+              </div>
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-primary-rural w-100">Check Weather</button>
+              </div>
+            </form>
+            <div id="weather-result" class="mt-3" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" style="margin-top:50px;">
+    <h2 class="section-title">Village Announcements</h2>
+    <div id="announcements-container">
+      <p class="text-muted">Loading announcements...</p>
+    </div>
+  </section>
+
+  <section class="bg-light-rural py-5" style="margin-top:50px;">
+    <div class="container">
+      <h2 class="section-title">How Rural Connect Works</h2>
+      <div class="row mt-4">
+        <div class="col-md-4 text-center">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5>1. Register & Login</h5>
+              <p>Create your account and access all services.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5>2. Use Services</h5>
+              <p>Report issues, explore schemes, check weather and market prices.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5>3. Track & Stay Updated</h5>
+              <p>Track complaint status and receive alerts and announcements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="text-center py-5" style="margin-top:50px;">
+    <div class="container">
+      <h2 class="section-title">Get Started Today</h2>
+      <p class="lead">Join Rural Connect and empower your village.</p>
+      <a href="register.html" class="btn btn-accent btn-lg">Create Free Account</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Rural Connect</h5>
+          <p>One platform for rural communities to access information, services, and opportunities.</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="schemes.html">Government Schemes</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Account</h5>
+          <ul class="list-unstyled">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="dashboard/user-dashboard.html">User Dashboard</a></li>
+            <li><a href="admin/admin-dashboard.html">Admin Dashboard</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="bg-light">
+      <div class="text-center">
+        <small>&copy; 2026 Rural Connect. All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', async () => {
+  // Load Alerts
+  try {
+    const alerts = await fetchAlerts({ limit: 3 });
+    const ac = document.getElementById('alerts-container');
+    if (!alerts || alerts.length === 0) {
+      ac.innerHTML = '<p class="text-muted">No emergency alerts at the moment.</p>';
+    } else {
+      ac.innerHTML = alerts.map(a => `
+        <div class="alert-banner ${a.severity === 'Critical' ? 'critical' : ''}">
+          <strong>${escapeHtml(a.title)}</strong>
+          <p class="mb-0">${escapeHtml(a.message)}</p>
+          <small class="text-muted">Location: ${escapeHtml(a.location)}</small>
+        </div>
+      `).join('');
+    }
+  } catch (err) {
+    document.getElementById('alerts-container').innerHTML = '<p class="text-danger">Failed to load alerts.</p>';
+  }
+
+  // Load Schemes
+  try {
+    const schemes = await fetchSchemes({ limit: 3, active: 'true' });
+    const sc = document.getElementById('schemes-container');
+    if (!schemes || schemes.length === 0) {
+      sc.innerHTML = '<div class="col-12 text-center text-muted">No schemes available.</div>';
+    } else {
+      sc.innerHTML = schemes.map(s => `
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">${escapeHtml(s.name)}</h5>
+              <p class="card-text text-muted">${truncateText(s.description, 100)}</p>
+              <a href="scheme-detail.html?id=${s._id}" class="btn btn-sm btn-primary-rural">View Details</a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+  } catch (err) {
+    document.getElementById('schemes-container').innerHTML = '<div class="col-12 text-center text-danger">Failed to load schemes.</div>';
+  }
+
+  // Load Announcements
+  try {
+    const anns = await fetchAnnouncements({ limit: 3, active: 'true' });
+    const anc = document.getElementById('announcements-container');
+    if (!anns || anns.length === 0) {
+      anc.innerHTML = '<p class="text-muted">No announcements at the moment.</p>';
+    } else {
+      anc.innerHTML = anns.map(a => `
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">${escapeHtml(a.title)}</h5>
+            <p class="card-text">${escapeHtml(a.message)}</p>
+            <small class="text-muted">Location: ${escapeHtml(a.location)}</small>
+          </div>
+        </div>
+      `).join('');
+    }
+  } catch (err) {
+    document.getElementById('announcements-container').innerHTML = '<p class="text-danger">Failed to load announcements.</p>';
+  }
+
+  // Weather Form
+  document.getElementById('weather-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const location = document.getElementById('weather-location').value.trim();
+    const resultDiv = document.getElementById('weather-result');
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = '<p class="text-muted">Fetching weather...</p>';
+
+    try {
+      const weather = await fetchWeather(location);
+      resultDiv.innerHTML = `
+        <h5>${escapeHtml(weather.location)}</h5>
+        <p><strong>Temperature:</strong> ${weather.temperature} °C</p>
+        <p><strong>Condition:</strong> ${escapeHtml(weather.condition)}</p>
+        <p><strong>Humidity:</strong> ${weather.humidity}% | <strong>Wind:</strong> ${weather.windSpeed} m/s</p>
+      `;
+    } catch (err) {
+      resultDiv.innerHTML = '<p class="text-danger">Failed to fetch weather. Ensure backend is running with OPENWEATHER_API_KEY.</p>';
+    }
+  });
+});
+  </script>
+</body>
+</html>
