@@ -1,165 +1,74 @@
-🌾 Rural Connect – One Platform for Rural India
+🌾 Rural Connect
 
-«A multilingual digital platform designed to connect rural citizens with government schemes, agricultural information, market updates, opportunities, and essential services.»
+Rural Connect is a web-based platform designed to provide useful information and digital services for rural communities.
 
----
+The platform brings important rural-related information into one place, including government schemes, agriculture, market information, opportunities, weather, announcements, alerts, complaints, and user services.
 
-📌 About the Project
+✨ Features
 
-Rural Connect is a web-based platform developed to reduce the information gap faced by people living in rural areas.
+- 🏠 Home Page
+  
+  - Introduction to Rural Connect
+  - Easy navigation to different services
 
-Many rural citizens are unaware of government welfare schemes, agricultural resources, employment opportunities, market information, and other essential services. Rural Connect brings these resources together on a single, simple and accessible platform.
+- 🏛️ Government Schemes
+  
+  - Browse available government schemes
+  - View scheme details and eligibility information
 
-The platform supports English, Marathi, and Hindi, making important information easier to understand and access.
+- 🌱 Agriculture
+  
+  - Agriculture-related information
+  - Useful information and resources for farmers
 
----
+- 🛒 Market Information
+  
+  - View available market information
+  - Access useful information for rural users
 
-🎯 Problem Statement
+- 💼 Opportunities
+  
+  - View available opportunities
+  - Access information about opportunities relevant to rural communities
 
-Rural communities often face difficulties such as:
+- 🌦️ Weather
+  
+  - View weather information
+  - Weather data can be provided through the weather API
 
-- Lack of awareness about government schemes
-- Difficulty understanding eligibility requirements
-- Limited access to reliable agricultural information
-- Lack of timely market and weather information
-- Difficulty reporting local problems
-- Limited awareness of employment and skill-development opportunities
-- Language barriers while accessing digital services
+- 📢 Announcements
+  
+  - View important announcements
+  - Keep users updated with new information
 
----
+- 🚨 Alerts
+  
+  - Display important alerts and notifications
 
-💡 Proposed Solution
+- 📝 Complaint Management
+  
+  - Users can submit complaints
+  - Users can view their complaints
+  - Users can track complaint details
 
-Rural Connect provides a centralized platform where users can:
+- 👤 User Account
+  
+  - User registration
+  - User login
+  - User profile
+  - User dashboard
+  - User notifications
 
-- 🔎 Explore government schemes
-- 📋 Check scheme eligibility and required documents
-- 🌾 Access agricultural information
-- 🌦️ Check weather information
-- 📈 View market information
-- 💼 Explore employment and other opportunities
-- 📢 Receive announcements and alerts
-- 📝 Submit complaints
-- 🤖 Ask questions to Rural Connect AI
-- 🌐 Use the platform in English, Marathi, or Hindi
-
----
-
-✨ Key Features
-
-🏛️ Government Schemes
-
-The platform currently provides information about 13 government schemes, including:
-
-1. PM-KISAN
-2. MGNREGA
-3. Pradhan Mantri Awas Yojana – Gramin
-4. Pradhan Mantri Fasal Bima Yojana
-5. Pradhan Mantri Ujjwala Yojana
-6. Ayushman Bharat PM-JAY
-7. PM Vishwakarma
-8. PM MUDRA Yojana
-9. Sukanya Samriddhi Yojana
-10. PM Kisan Maandhan Yojana
-11. Pradhan Mantri Jan-Dhan Yojana
-12. Post-Matric Scholarship
-13. Pradhan Mantri Matru Vandana Yojana
-
-Each scheme provides information such as:
-
-- Description
-- Benefits
-- Eligibility
-- Required documents
-- Application process
-- Official application link
-
----
-
-🌐 Multilingual Support
-
-Users can access scheme information in:
-
-- 🇬🇧 English
-- 🇮🇳 Marathi
-- 🇮🇳 Hindi
-
-The language selection is available throughout the website, and scheme detail pages provide translated information directly.
-
----
-
-🤖 Rural Connect AI
-
-The project includes an AI-powered chatbot that helps users find information about:
-
-- Government schemes
-- Agriculture
-- Market information
-- Opportunities
-- Announcements
-- Rural services
-
-The chatbot can respond according to the selected language.
-
----
-
-🌾 Agriculture
-
-Provides useful agricultural information such as:
-
-- Crop-related information
-- Farming resources
-- Agricultural recommendations
-- Relevant government support
-
----
-
-🌦️ Weather
-
-The platform can provide weather-related information to help farmers make better decisions regarding:
-
-- Irrigation
-- Sowing
-- Harvesting
-- Crop protection
-
----
-
-📈 Market Information
-
-Users can view agricultural market information to understand available crop prices and market opportunities.
-
----
-
-📝 Complaint System
-
-Users can submit complaints about local problems and issues.
-
-This feature aims to improve communication between rural citizens and responsible authorities.
-
----
-
-💼 Opportunities
-
-The platform provides information about available opportunities such as:
-
-- Employment
-- Skill development
-- Training
-- Rural livelihood opportunities
-
----
-
-🔐 Authentication
-
-The project includes:
-
-- User registration
-- User login
-- User dashboard
-- Authentication-related functionality
-
----
+- 👨‍💼 Admin Dashboard
+  
+  - Manage users
+  - Manage schemes
+  - Manage agriculture information
+  - Manage announcements
+  - Manage alerts
+  - Manage opportunities
+  - Manage complaints
+  - View analytics
 
 🛠️ Technologies Used
 
@@ -168,175 +77,276 @@ Frontend
 - HTML5
 - CSS3
 - JavaScript
-- Responsive Web Design
+- Bootstrap
 
 Backend
 
 - Node.js
-- HTTP module
-- REST-style APIs
-- JSON-based data storage
+- Express.js
+- REST APIs
+- JWT Authentication
 
-AI
+Data Storage
 
-- OpenAI API
-- Rural Connect AI chatbot
-- Local fallback responses
+The current project uses a JSON-based data storage system:
 
-Development Tools
+Backend/data/rural-connect.json
 
-- Visual Studio Code
-- Git
-- GitHub
-- Node.js
+📁 Project Structure
 
----
-
-📂 Project Structure
-
-Rural Connect<br/>
+RuralConnect/<br/>
+│<br/>
+├── frontend/<br/>
+│   ├── index.html<br/>
+│   ├── about.html<br/>
+│   ├── login.html<br/>
+│   ├── register.html<br/>
+│   ├── agriculture.html<br/>
+│   ├── market.html<br/>
+│   ├── opportunities.html<br/>
+│   ├── schemes.html<br/>
+│   ├── scheme-detail.html<br/>
+│   ├── weather.html<br/>
+│   │<br/>
+│   ├── dashboard/<br/>
+│   │   ├── user-dashboard.html<br/>
+│   │   ├── profile.html<br/>
+│   │   ├── my-complaints.html<br/>
+│   │   ├── submit-complaint.html<br/>
+│   │   ├── complaint-detail.html<br/>
+│   │   └── notifications.html<br/>
+│   │<br/>
+│   ├── admin/
+│   │   ├── admin-dashboard.html<br/>
+│   │   ├── users.html<br/>
+│   │   ├── schemes.html<br/>
+│   │   ├── agriculture.html<br/>
+│   │   ├── announcements.html<br/>
+│   │   ├── alerts.html<br/>
+│   │   ├── opportunities.html<br/>
+│   │   ├── complaints.html<br/>
+│   │   └── analytics.html<br/>
+│   │<br/>
+│   ├── css/<br/>
+│   └── js/<br/>
 │<br/>
 ├── Backend<br/>
 │   ├── server.js<br/>
+│   ├── seed.js<br/>
 │   ├── package.json<br/>
-│   ├── .env<br/>
+│   ├── package-lock.json<br/>
 │   ├── .env.example<br/>
-│   └── data<br/>
-│       └── rural-connect.json<br/>
+│   ├── data/<br/>
+│   │   └── rural-connect.json<br/>
+│   └── uploads/<br/>
 │<br/>
-├── frontend<br/>
-│   ├── index.html<br/>
-│   ├── about.html<br/>
-│   ├── schemes.html<br/>
-│   ├── scheme-detail.html<br/>
-│   ├── agriculture.html<br/>
-│   ├── weather.html<br/>
-│   ├── market.html<br/>
-│   ├── opportunities.html<br/>
-│   ├── login.html<br/>
-│   ├── register.html<br/>
-│   │<br/>
-│   ├── css<br/>
-│   └── js<br/>
-│<br/>
+├── package.json<br/>
+├── package-lock.json<br/>
+├── .gitignore<br/>
 └── README.md<br/>
 
+💻 Requirements
+
+Before running the project, install:
+
+- Node.js
+- npm
+- A modern web browser
+
+Check Node.js:
+
+node --version
+
+Check npm:
+
+npm --version
+
+🔑 Authentication
+
+Rural Connect provides user authentication using:
+
+- User registration
+- User login
+- JWT authentication
+- Protected user routes
+- Admin authentication
+- Role-based access
+
+👤 User Features
+
+Registered users can access their personal dashboard.
+
+The dashboard provides features such as:
+
+- Profile
+- Complaints
+- Notifications
+- Available schemes
+- Agriculture information
+- Market information
+- Opportunities
+- Announcements
+- Alerts
+
+👨‍💼 Admin Features
+
+The administrator can manage the information displayed on the platform.
+
+Admin functionality includes:
+
+- User management
+- Scheme management
+- Agriculture management
+- Announcement management
+- Alert management
+- Opportunity management
+- Complaint management
+- Analytics
+
+📊 Data Storage
+
+The current version stores application data in:
+
+Backend/data/rural-connect.json
+
+The project includes a seed script for initializing the demo data.
+
+Run:
+
+npm run seed
+
+to initialize the data.
+
+🔌 API
+
+The frontend communicates with the backend using REST APIs.
+
+Some of the main API areas include:
+
+/api/auth
+/api/users
+/api/schemes
+/api/agriculture
+/api/market
+/api/opportunities
+/api/announcements
+/api/alerts
+/api/complaints
+/api/notifications
+/api/weather
+
+The backend also provides a health-check endpoint:
+
+/api/health
+
+🌐 Deployment
+
+The project can be deployed using a separate frontend and backend setup.
+
+Backend
+
+The Node.js backend can be deployed on platforms such as:
+
+- Render
+- Railway
+- Other Node.js hosting platforms
+
+Typical backend settings:
+
+Root Directory: Backend
+Build Command: npm install
+Start Command: npm start
+
+Environment variables such as "JWT_SECRET" and "OPENWEATHER_API_KEY" should be added through the hosting platform's environment-variable settings.
+
+Frontend
+
+The frontend consists of HTML, CSS, and JavaScript files and can be deployed using platforms such as:
+
+- Netlify
+- Vercel
+- GitHub Pages 
+
+The frontend API configuration should point to the deployed backend URL.
+
+🔄 Updating the Project
+
+After making changes to the project:
+
+git add .
+
+Create a commit:
+
+git commit -m "Update project"
+
+Push the changes:
+
+git push
+
+🧪 Troubleshooting
+
+Backend does not start
+
+Try:
+
+npm install
+
+Then:
+
+npm start
+
+Website cannot connect to the backend
+
+Check that the backend is running and test:
+
+http://localhost:5000/api/health
+
+Weather is not working
+
+Check that:
+
+OPENWEATHER_API_KEY
+
+is correctly configured in "Backend/.env".
+
+Login is not working
+
+Check:
+
+- Backend is running
+- Database/data file is available
+- Required environment variables are configured
+- Browser console for frontend errors
+
+🎯 Project Objective
+
+The main objective of Rural Connect is to provide a simple digital platform where rural users can access important information and services from one place.
+
+The project focuses on improving access to:
+
+- Government schemes
+- Agriculture information
+- Market information
+- Weather information
+- Opportunities
+- Announcements
+- Alerts
+- Complaint services
+
+📌 Project Status
+
+Project Type: Web Application
+
+Status: Academic / Demonstration Project
+
+Rural Connect is currently designed as an academic and demonstration project. The current version uses JSON-based data storage and can be further enhanced with a production database and additional security features.
+
+📄 License
+
+This project is created for educational and demonstration purposes.
+
 ---
 
-🔑 API Key Security
+🌾 Rural Connect
 
-The OpenAI API key must remain on the backend.
-
-Do not put the API key inside:
-
-HTML
-CSS
-frontend JavaScript
-GitHub repository
-
-Use the ".env" file instead.
-
-The ".env" file should be included in ".gitignore".
-
----
-
-📊 Main Modules
-
-Module| Purpose
-🏠 Home| Introduction and navigation<br/>
-🏛️ Schemes| Government welfare schemes<br/>
-🌾 Agriculture| Agricultural information<br/>
-🌦️ Weather| Weather information<br/>
-📈 Market| Market information<br/>
-💼 Opportunities| Jobs and opportunities<br/>
-📝 Complaints| Report local issues<br/>
-📢 Alerts| Important notifications<br/>
-🤖 AI Chatbot| User assistance<br/>
-🔐 Authentication| Login and registration<br/>
-👤 Dashboard| User-specific information<br/>
-
----
-
-👥 Target Users
-
-Rural Connect is primarily designed for:
-
-- 👨‍🌾 Farmers<br/>
-- 👩‍🌾 Rural women<br/>
-- 👨‍👩‍👧 Rural families<br/>
-- 🎓 Students<br/>
-- 💼 Job seekers<br/>
-- 🏘️ Rural communities<br/>
-- 🧑‍💼 Local administrators<br/>
-
----
-
-🌍 Social Impact
-
-Rural Connect aims to contribute toward:
-
-- Better awareness of government welfare programs
-- Improved access to digital information
-- Better agricultural decision-making
-- Increased awareness of employment opportunities
-- Improved communication between citizens and authorities
-- Reduced language barriers
-- Digital empowerment of rural communities
-
----
-
-🚀 Future Enhancements
-
-Future versions can include:
-
-- 📱 Android/mobile application<br/>
-- 🎙️ Voice-based AI assistant<br/>
-- 🗣️ Speech-to-text support<br/>
-- 📍 Location-based scheme recommendations<br/>
-- 📸 Image-based crop disease detection<br/>
-- 🧑‍🌾 Personalized farmer dashboard<br/>
-- 🔔 SMS and WhatsApp notifications<br/>
-- 🗺️ Nearby government service centers<br/>
-- 🏢 Direct authority/admin communication<br/>
-- 🧠 More advanced AI-based scheme eligibility checking<br/>
-- ☁️ Cloud database<br/>
-- 🔒 Advanced authentication and security<br/>
-
----
-
-⚠️ Disclaimer
-
-The information provided through Rural Connect is intended for informational and educational purposes.
-
-Users should verify eligibility, benefits, application procedures, and other details through the official government portals before applying for any scheme.
-
----
-
-🎓 Academic Project
-
-Project: Rural Connect – One Platform for Rural India
-
-Domain: Web Development / Artificial Intelligence / Rural Digital Empowerment
-
-Developed as: Engineering Academic Project
-
----
-
-⭐ Contributing
-
-Contributions and suggestions are welcome.
-
-If you have an idea to improve Rural Connect:
-
-1. Fork the repository
-2. Create a new branch
-3. Make your changes
-4. Commit your changes
-5. Push the branch
-6. Create a Pull Request
-
----
-
-📜 License
-
-This project is developed for educational and academic purposes.
+Connecting Rural Communities with Information and Services.
