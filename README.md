@@ -116,7 +116,7 @@ RuralConnect/<br/>
 │   │   ├── complaint-detail.html<br/>
 │   │   └── notifications.html<br/>
 │   │<br/>
-│   ├── admin/
+│   ├── admin/<br/>
 │   │   ├── admin-dashboard.html<br/>
 │   │   ├── users.html<br/>
 │   │   ├── schemes.html<br/>
@@ -282,41 +282,6 @@ git commit -m "Update project"
 Push the changes:
 
 git push
-
-🧪 Troubleshooting
-
-Backend does not start
-
-Try:
-
-npm install
-
-Then:
-
-npm start
-
-Website cannot connect to the backend
-
-Check that the backend is running and test:
-
-http://localhost:5000/api/health
-
-Weather is not working
-
-Check that:
-
-OPENWEATHER_API_KEY
-
-is correctly configured in "Backend/.env".
-
-Login is not working
-
-Check:
-
-- Backend is running
-- Database/data file is available
-- Required environment variables are configured
-- Browser console for frontend errors
 
 🎯 Project Objective
 
