@@ -261,13 +261,13 @@ Module| Purpose
 
 Rural Connect is primarily designed for:
 
-- 👨‍🌾 Farmers
-- 👩‍🌾 Rural women
-- 👨‍👩‍👧 Rural families
-- 🎓 Students
-- 💼 Job seekers
-- 🏘️ Rural communities
-- 🧑‍💼 Local administrators
+- 👨‍🌾 Farmers<br/>
+- 👩‍🌾 Rural women<br/>
+- 👨‍👩‍👧 Rural families<br/>
+- 🎓 Students<br/>
+- 💼 Job seekers<br/>
+- 🏘️ Rural communities<br/>
+- 🧑‍💼 Local administrators<br/>
 
 ---
 
@@ -289,18 +289,18 @@ Rural Connect aims to contribute toward:
 
 Future versions can include:
 
-- 📱 Android/mobile application
-- 🎙️ Voice-based AI assistant
-- 🗣️ Speech-to-text support
-- 📍 Location-based scheme recommendations
-- 📸 Image-based crop disease detection
-- 🧑‍🌾 Personalized farmer dashboard
-- 🔔 SMS and WhatsApp notifications
-- 🗺️ Nearby government service centers
-- 🏢 Direct authority/admin communication
-- 🧠 More advanced AI-based scheme eligibility checking
-- ☁️ Cloud database
-- 🔒 Advanced authentication and security
+- 📱 Android/mobile application<br/>
+- 🎙️ Voice-based AI assistant<br/>
+- 🗣️ Speech-to-text support<br/>
+- 📍 Location-based scheme recommendations<br/>
+- 📸 Image-based crop disease detection<br/>
+- 🧑‍🌾 Personalized farmer dashboard<br/>
+- 🔔 SMS and WhatsApp notifications<br/>
+- 🗺️ Nearby government service centers<br/>
+- 🏢 Direct authority/admin communication<br/>
+- 🧠 More advanced AI-based scheme eligibility checking<br/>
+- ☁️ Cloud database<br/>
+- 🔒 Advanced authentication and security<br/>
 
 ---
 
