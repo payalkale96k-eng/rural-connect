@@ -243,17 +243,17 @@ The ".env" file should be included in ".gitignore".
 📊 Main Modules
 
 Module| Purpose
-🏠 Home| Introduction and navigation
-🏛️ Schemes| Government welfare schemes
-🌾 Agriculture| Agricultural information
-🌦️ Weather| Weather information
-📈 Market| Market information
-💼 Opportunities| Jobs and opportunities
-📝 Complaints| Report local issues
-📢 Alerts| Important notifications
-🤖 AI Chatbot| User assistance
-🔐 Authentication| Login and registration
-👤 Dashboard| User-specific information
+🏠 Home| Introduction and navigation<br/>
+🏛️ Schemes| Government welfare schemes<br/>
+🌾 Agriculture| Agricultural information<br/>
+🌦️ Weather| Weather information<br/>
+📈 Market| Market information<br/>
+💼 Opportunities| Jobs and opportunities<br/>
+📝 Complaints| Report local issues<br/>
+📢 Alerts| Important notifications<br/>
+🤖 AI Chatbot| User assistance<br/>
+🔐 Authentication| Login and registration<br/>
+👤 Dashboard| User-specific information<br/>
 
 ---
 
