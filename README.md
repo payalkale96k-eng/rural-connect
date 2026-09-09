@@ -194,32 +194,32 @@ Development Tools
 
 📂 Project Structure
 
-Rural Connect
-│
-├── Backend
-│   ├── server.js
-│   ├── package.json
-│   ├── .env
-│   ├── .env.example
-│   └── data
-│       └── rural-connect.json
-│
-├── frontend
-│   ├── index.html
-│   ├── about.html
-│   ├── schemes.html
-│   ├── scheme-detail.html
-│   ├── agriculture.html
-│   ├── weather.html
-│   ├── market.html
-│   ├── opportunities.html
-│   ├── login.html
-│   ├── register.html
-│   │
-│   ├── css
-│   └── js
-│
-└── README.md
+Rural Connect<br/>
+│<br/>
+├── Backend<br/>
+│   ├── server.js<br/>
+│   ├── package.json<br/>
+│   ├── .env<br/>
+│   ├── .env.example<br/>
+│   └── data<br/>
+│       └── rural-connect.json<br/>
+│<br/>
+├── frontend<br/>
+│   ├── index.html<br/>
+│   ├── about.html<br/>
+│   ├── schemes.html<br/>
+│   ├── scheme-detail.html<br/>
+│   ├── agriculture.html<br/>
+│   ├── weather.html<br/>
+│   ├── market.html<br/>
+│   ├── opportunities.html<br/>
+│   ├── login.html<br/>
+│   ├── register.html<br/>
+│   │<br/>
+│   ├── css<br/>
+│   └── js<br/>
+│<br/>
+└── README.md<br/>
 
 ---
 
